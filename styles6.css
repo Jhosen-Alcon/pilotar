@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('marcoavionpaint.png'); /* Aquí debes colocar la ruta de tu imagen */
+    background-size: cover; /* Hace que la imagen cubra todo el fondo */
+    background-position: center; /* Centra la imagen en el fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+#game-container {
+    width: 90%;
+    max-width: 900px;
+    text-align: center;
+}
+
+#header {
+    text-align: center;
+}
+
+#capitan-viento-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+#dialogo {
+    background-color: #fff;
+    border: 2px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 400px;
+    text-align: left;
+}
+
+#dialogo img {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+#capitan-viento {
+    width: 100px;
+    height: auto;
+}
+
+#siguiente {
+    display: block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+}

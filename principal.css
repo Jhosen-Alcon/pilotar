@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('principalaviion.png'); /* Aquí puedes colocar la ruta de tu imagen de fondo */
+    background-size: cover;
+    background-position: center;
+}
+
+#inicio-container {
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #008CBA; /* Color del botón */
+    color: white;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #005f73; /* Color al pasar el ratón */
+}

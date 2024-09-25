@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Memoria - Nivel 2</title>
+    <link rel="stylesheet" href="styles41.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="header">
+            <h1>Juego de Memoria</h1>
+            <h1>Derrape</h1>
+        </div>
+        <div id="capitan-viento-container">
+            <div id="dialogo">
+                <p id="mensaje-capitan">¡Hola! Soy el Capitán Viento. Con lo que te enseñe anteriormente veamos ahora cual es la indicacion del derrape, ocurre cuando el avión no está alineado con la dirección del vuelo. Ahi se debe ajustar el timón para evitarlo. HAZ CLICK PARA CONTINUAR (ahora sin imagen ayuda)</p>
+                <!--<img id="imagen-referencia" src="colores.jpg" alt="Timón de dirección">-->
+            </div>
+            <img id="capitan-viento" src="capitan_viento.png" alt="Capitán Viento">
+        </div>
+        <div id="game-board">
+            <div id="memory-board" class="grid-4x2">
+                <div class="memory-card" data-name="correct1">
+                    <div class="card-back"></div>
+                    <img class="card-front" src="derrape.png" alt="correct1">
+                </div>
+                <div class="memory-card" data-name="incorrecto1">
+                    <div class="card-back"></div>
+                    <img class="card-front" src="resbale.png" alt="Imagen Incorrecta 1">
+                </div>
+                <div class="memory-card" data-name="incorrecto2">
+                    <div class="card-back"></div>
+                    <img class="card-front" src="coordinador.png" alt="Imagen Incorrecta 2">
+                </div>
+                <div class="memory-card" data-name="incorrecto3">
+                    <div class="card-back"></div>
+                    <img class="card-front" src="incorrecto.png" alt="Imagen Incorrecta 3">
+                </div>
+                <div class="memory-card" data-name="incorrecto4">
+                    <div class="card-back"></div>
+                    <img class="card-front" src="incorrecto.png" alt="Imagen Incorrecta 4">
+                </div>
+                <div class="memory-card" data-name="incorrecto5">
+                    <div class="card-back"></div>
+                    <img class="card-front" src="coordinador.png" alt="Imagen Incorrecta 5">
+                </div>
+                <div class="memory-card" data-name="correct2">
+                    <div class="card-back"></div>
+                    <img class="card-front" src="derrape.png" alt="correct2">
+                </div>
+                <div class="memory-card" data-name="incorrecto7">
+                    <div class="card-back"></div>
+                    <img class="card-front" src="resbale.png" alt="Imagen Incorrecta 7">
+                </div>
+            </div>
+            <div id="sidebar">
+                <p>Puntaje: <span id="score">0</span></p>
+                <p>Tiempo restante: <span id="time">30</span> segundos</p>
+                <p>Movimientos: <span id="moves">0</span></p>
+            </div>
+        </div>
+        <div id="feedback-container">
+            <p id="feedback"></p>
+        </div>
+    </div>
+    <script src="script-nivel41.js"></script>
+</body>
+</html>

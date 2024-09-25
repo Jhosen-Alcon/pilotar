@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('marcoavionpaint.png'); /* Aquí debes colocar la ruta de tu imagen */
+    background-size: cover; /* Hace que la imagen cubra todo el fondo */
+    background-position: center; /* Centra la imagen en el fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+#game-container {
+    width: 90%;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Ajuste de columnas para alineación */
+    gap: 20px;
+}
+
+#header {
+    grid-column: span 2;
+    text-align: center;
+}
+
+#capitan-viento-container {
+    grid-column: span 12;
+    display: flex;
+    align-items: center;
+    justify-content: right; /* Alinear al lado derecho */
+    gap: 20px;
+    margin-bottom: -340px;
+}
+
+#capitan-viento {
+    width: 80px; /* Ajuste del tamaño de la imagen */
+    height: auto;
+    order: 1; /* Cambiar el orden para estar a la izquierda */
+}
+
+#dialogo {
+    background-color: #fff;
+    border: 2px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    max-width: 300px;
+    order: 2; /* Cambiar el orden para estar a la derecha */
+    text-align: left; /* Alinear el texto a la izquierda */
+}
+
+#dialogo p {
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+#imagen-referencia {
+    width: 100%; /* Reducir el tamaño de la imagen de referencia */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+}
+
+#memory-board {
+    display: grid;
+    gap: 10px;
+}
+
+.grid-2x2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.memory-card {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    perspective: 1000px;
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.card-front {
+    transform: rotateY(180deg);
+}
+
+.card-back {
+    background-color: #dcdcdc;
+    background-image: url('ALAS.png'); /* Imagen de fondo */
+    background-size: contain; /* Cambiado de cover a contain */
+    background-position: center;
+    background-repeat: no-repeat; /* Para evitar repeticiones */
+}
+
+
+.memory-card.flipped .card-front {
+    transform: rotateY(0);
+}
+
+.memory-card.flipped .card-back {
+    transform: rotateY(180deg);
+}
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinear los elementos del puntaje hacia arriba */
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 1.2em;
+}
+
+#feedback-container {
+    grid-column: span 2;
+    text-align: center;
+    margin-top: 20px;
+    height: 40px;
+}
+
+#feedback {
+    font-size: 1.2em;
+}
