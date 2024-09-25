@@ -11,6 +11,27 @@ const dialogo = document.getElementById('dialogo');
 let correctCards = 0; // Para contar las respuestas correctas seleccionadas
 let gameStarted = false; // Variable para controlar el inicio del juego
 
+// Función para mostrar el nombre del jugador
+function mostrarNombre() {
+    const nombreElemento = document.getElementById('nombreJugadorDisplay');
+    const nombreJugador = localStorage.getItem('nombreJugador');
+    nombreElemento.textContent = `Jugador: ${nombreJugador}`;
+}
+
+// Función para mostrar los puntos acumulados
+function mostrarPuntosAcumulados() {
+    const puntosElemento = document.getElementById('puntosAcumuladosDisplay');
+    puntosElemento.textContent = `Puntos Acumulados: ${localStorage.getItem('puntos') || 0}`;
+}
+
+// Función para mostrar el grado del jugador
+function mostrarGrado() {
+    const grados = ['Civil', 'Aprendiz', 'Novato', 'Intermedio', 'Avanzado', 'Experto', 'Maestro', 'Aviador', 'Capitán', 'Comandante', 'Piloto'];
+    const gradoIndex = parseInt(localStorage.getItem('grado')) || 0;
+    const gradoElemento = document.getElementById('gradoJugadorDisplay');
+    gradoElemento.textContent = `Grado: ${grados[gradoIndex]}`;
+}
+
 // Iniciar el temporizador
 function startTimer() {
     const timer = setInterval(() => {
@@ -52,6 +73,10 @@ function checkAnswer(card) {
         score++;
         scoreDisplay.textContent = score;
         if (correctCards === 7) { // Si se seleccionaron las 7 respuestas correctas
+            // Acumular los puntos en localStorage
+            let puntosAcumulados = parseInt(localStorage.getItem('puntos')) || 0;
+            puntosAcumulados += score;
+            localStorage.setItem('puntos', puntosAcumulados);
             setTimeout(() => {
                 advanceToNextLevel();
             }, 1000); // Reducido el tiempo de espera a 1 segundo antes de avanzar
@@ -78,8 +103,21 @@ function handleCardClick(event) {
 
 // Avanzar al siguiente nivel
 function advanceToNextLevel() {
-    window.location.href = 'nivel7.html'; // Redirigir al siguiente nivel
+    // Incrementar el grado del jugador
+    let gradoIndex = parseInt(localStorage.getItem('grado')) || 0;
+    gradoIndex = Math.min(gradoIndex + 1, 10); // Máximo grado: "Piloto"
+    localStorage.setItem('grado', gradoIndex);
+
+    // Redirigir al siguiente nivel
+    window.location.href = 'nivel7.html'; // Cambia esto por el archivo HTML del siguiente nivel
 }
+
+// Inicializar el juego al cargar el nivel
+window.onload = function() {
+    mostrarNombre();
+    mostrarPuntosAcumulados();
+    mostrarGrado();
+};
 
 // Añadir event listeners a las cartas y al diálogo del Capitán Viento
 cards.forEach(card => {
