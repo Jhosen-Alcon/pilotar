@@ -10,6 +10,7 @@ const dialogo = document.getElementById('dialogo');
 
 let correctCards = 0; // Para contar las respuestas correctas seleccionadas
 let gameStarted = false; // Variable para controlar el inicio del juego
+let firstCorrectCard = null; // Guardar la primera carta correcta seleccionada
 
 // Función para mostrar el nombre del jugador
 function mostrarNombre() {
@@ -66,20 +67,28 @@ function checkAnswer(card) {
     card.classList.add('flipped'); // Mostrar la carta seleccionada
     const cardName = card.getAttribute('data-name');
     
-    if (cardName.startsWith('correct')) { // Se selecciona una carta correcta
-        correctCards++;
-        feedback.textContent = `¡Correcto! Has encontrado ${correctCards} de 7 respuestas correctas.`;
-        feedback.style.color = 'green';
-        score++;
-        scoreDisplay.textContent = score;
-        if (correctCards === 7) { // Si se seleccionaron las 7 respuestas correctas
-            // Acumular los puntos en localStorage
-            let puntosAcumulados = parseInt(localStorage.getItem('puntos')) || 0;
-            puntosAcumulados += score;
-            localStorage.setItem('puntos', puntosAcumulados);
-            setTimeout(() => {
-                advanceToNextLevel();
-            }, 1000); // Reducido el tiempo de espera a 1 segundo antes de avanzar
+    if (cardName === 'correct1' || cardName === 'correct2') {
+        if (firstCorrectCard === null) {
+            firstCorrectCard = cardName; // Guardar la primera carta correcta seleccionada
+            feedback.textContent = '¡Correcto! Ahora encuentra la otra respuesta correcta.';
+            feedback.style.color = 'green';
+            score++;
+            scoreDisplay.textContent = score;
+        } else if (firstCorrectCard !== cardName) {
+            correctCards++;
+            feedback.textContent = '¡Correcto! Has encontrado ambas respuestas correctas.';
+            feedback.style.color = 'green';
+            score++;
+            scoreDisplay.textContent = score;
+            if (correctCards === 1) { // Si se seleccionaron ambas respuestas correctas
+                // Acumular los puntos en localStorage
+                let puntosAcumulados = parseInt(localStorage.getItem('puntos')) || 0;
+                puntosAcumulados += score;
+                localStorage.setItem('puntos', puntosAcumulados);
+                setTimeout(() => {
+                    advanceToNextLevel();
+                }, 1000); // Reducido el tiempo de espera a 1 segundo antes de avanzar
+            }
         }
     } else {
         feedback.textContent = 'Intenta de nuevo.';
@@ -109,7 +118,7 @@ function advanceToNextLevel() {
     localStorage.setItem('grado', gradoIndex);
 
     // Redirigir al siguiente nivel
-    window.location.href = 'nivel10.html'; // Cambia esto por el archivo HTML del siguiente nivel
+    window.location.href = 'nivel48.html'; // Cambia esto por el archivo HTML del siguiente nivel
 }
 
 // Inicializar el juego al cargar el nivel

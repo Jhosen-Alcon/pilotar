@@ -66,13 +66,14 @@ function checkAnswer(card) {
     card.classList.add('flipped'); // Mostrar la carta seleccionada
     const cardName = card.getAttribute('data-name');
     
-    if (cardName.startsWith('correct')) { // Se selecciona una carta correcta
+    if (cardName === 'correct') {
         correctCards++;
-        feedback.textContent = `¡Correcto! Has encontrado ${correctCards} de 7 respuestas correctas.`;
+        feedback.textContent = `¡Correcto! Has encontrado ${correctCards} de 3 respuestas correctas.`;
         feedback.style.color = 'green';
         score++;
         scoreDisplay.textContent = score;
-        if (correctCards === 7) { // Si se seleccionaron las 7 respuestas correctas
+
+        if (correctCards === 3) { // Si se seleccionaron las tres respuestas correctas
             // Acumular los puntos en localStorage
             let puntosAcumulados = parseInt(localStorage.getItem('puntos')) || 0;
             puntosAcumulados += score;
@@ -109,7 +110,7 @@ function advanceToNextLevel() {
     localStorage.setItem('grado', gradoIndex);
 
     // Redirigir al siguiente nivel
-    window.location.href = 'nivel10.html'; // Cambia esto por el archivo HTML del siguiente nivel
+    window.location.href = 'nivel14.html'; // Cambia esto por el archivo HTML del siguiente nivel
 }
 
 // Inicializar el juego al cargar el nivel

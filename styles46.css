@@ -1,0 +1,131 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('finalmarco.png'); /* Aquí debes colocar la ruta de tu imagen */
+    background-size: cover; /* Hace que la imagen cubra todo el fondo */
+    background-position: center; /* Centra la imagen en el fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+#game-container {
+    width: 90%;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+#header {
+    grid-column: span 2;
+    text-align: center;
+}
+
+#capitan-viento-container {
+    grid-column: span 12;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 20px;
+    margin-bottom: -340px;
+}
+
+#capitan-viento {
+    width: 80px;
+    height: auto;
+    order: 1;
+}
+
+#dialogo {
+    background-color: #fff;
+    border: 2px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    max-width: 300px;
+    order: 2;
+    text-align: left;
+}
+
+#dialogo p {
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+#imagen-referencia {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+}
+
+#memory-board {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 3 columnas para las 6 cards */
+    gap: 15px; /* Espaciado entre cards */
+}
+
+.memory-card {
+    position: relative;
+    width: 100%;
+    height: 150px; /* Mantén el tamaño adecuado de las cards */
+    cursor: pointer;
+    transition: transform 0.3s;
+    perspective: 1000px;
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.card-front {
+    transform: rotateY(180deg);
+}
+
+.card-back {
+    background-color: #dcdcdc;
+    background-image: url('ALAS.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.memory-card.flipped .card-front {
+    transform: rotateY(0);
+}
+
+.memory-card.flipped .card-back {
+    transform: rotateY(180deg);
+}
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 1.2em;
+}
+
+#feedback-container {
+    grid-column: span 2;
+    text-align: center;
+    margin-top: 20px;
+    height: 40px;
+}
+
+#feedback {
+    font-size: 1.2em;
+}

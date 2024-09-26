@@ -118,7 +118,7 @@ function advanceToNextLevel() {
     localStorage.setItem('grado', gradoIndex);
 
     // Redirigir al siguiente nivel
-    window.location.href = 'nivel44.html'; // Cambia esto por el archivo HTML del siguiente nivel
+    window.location.href = 'nivel5.html'; // Cambia esto por el archivo HTML del siguiente nivel
 }
 
 // Inicializar el juego al cargar el nivel
