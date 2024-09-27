@@ -45,7 +45,7 @@ function checkAnswer(card) {
 
     if (correctAnswers.includes(cardName)) {
         correctChoices++;
-        score++;
+        score += 5;
         scoreDisplay.textContent = score;
         feedback.textContent = `¡Correcto! ${cardName} puede causar un derrape.`;
         feedback.style.color = 'green';

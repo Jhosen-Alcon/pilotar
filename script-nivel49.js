@@ -68,7 +68,7 @@ function checkAnswer(card) {
     if (cardName === 'correct') {
         feedback.textContent = '¡Correcto! Has encontrado la respuesta correcta.';
         feedback.style.color = 'green';
-        score++;
+        score += 5;
         scoreDisplay.textContent = score;
 
         // Acumular los puntos en localStorage

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Memoria - Nivel 3</title>
+    <link rel="stylesheet" href="styles54.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="header">
+            <h1>Juego de Memoria</h1>
+            <h1>Sumario - recuerda todas la imagenes vistas y seleccionalas</h1>
+            <!-- Añadir nombre del jugador, puntos y grado -->
+            <div id="nombreJugadorDisplay"></div>
+            <div id="puntosAcumuladosDisplay"></div>
+            <div id="gradoJugadorDisplay"></div>
+        </div>
+        <div id="game-board">
+            <div id="memory-board" class="grid-4x3"> <!-- Cambiado a grid de 4x3 -->
+                <div class="memory-card" data-name="correct">
+                    <div class="card-back"></div>
+                    <img class="card-front" src="cambiovelocidad1.png" alt="correct1">
+                </div>
+                <div class="memory-card" data-name="correct">
+                    <div class="card-back"></div>
+                    <img class="card-front" src="resbale.png" alt="Imagen Incorrecta 1">
+                </div>
+                <div class="memory-card" data-name="correct">
+                    <div class="card-back"></div>
+                    <img class="card-front" src="coordinador.png" alt="Imagen Incorrecta 2">
+                </div>
+                <div class="memory-card" data-name="correct">
+                    <div class="card-back"></div>
+                    <img class="card-front" src="cambiovelocidad3.png" alt="correct2">
+                </div>
+                <div class="memory-card" data-name="correct">
+                    <div class="card-back"></div>
+                    <img class="card-front" src="incorrecto.png" alt="Imagen Incorrecta 4">
+                </div>
+                <div class="memory-card" data-name="incorrecto5">
+                    <div class="card-back"></div>
+                    <img class="card-front" src="coordinador.png" alt="Imagen Incorrecta 5">
+                </div>
+                <div class="memory-card" data-name="correct">
+                    <div class="card-back"></div>
+                    <img class="card-front" src="cambiovelocidad2.png" alt="correct3">
+                </div>
+                <div class="memory-card" data-name="correct">
+                    <div class="card-back"></div>
+                    <img class="card-front" src="resbale.png" alt="Imagen Incorrecta 7">
+                </div>
+                <div class="memory-card" data-name="correct">
+                    <div class="card-back"></div>
+                    <img class="card-front" src="coordinador.png" alt="Imagen Incorrecta 8">
+                </div>
+                <div class="memory-card" data-name="correct">
+                    <div class="card-back"></div>
+                    <img class="card-front" src="incorrecto.png" alt="Imagen Incorrecta 9">
+                </div>
+                <div class="memory-card" data-name="correct">
+                    <div class="card-back"></div>
+                    <img class="card-front" src="coordinador.png" alt="Imagen Incorrecta 10">
+                </div>
+                <div class="memory-card" data-name="incorrecto11">
+                    <div class="card-back"></div>
+                    <img class="card-front" src="incorrecto.png" alt="Imagen Incorrecta 11">
+                </div>
+            </div>
+            <div id="sidebar">
+                <p>Puntaje: <span id="score">0</span></p>
+                <p>Tiempo restante: <span id="time">30</span> segundos</p>
+                <p>Movimientos: <span id="moves">0</span></p>
+            </div>
+        </div>
+        <div id="feedback-container">
+            <p id="feedback"></p>
+        </div>
+    </div>
+    <script src="script-nivel54.js"></script>
+</body>
+</html>

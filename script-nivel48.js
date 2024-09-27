@@ -72,13 +72,13 @@ function checkAnswer(card) {
             firstCorrectCard = cardName; // Guardar la primera carta correcta seleccionada
             feedback.textContent = '¡Correcto! Ahora encuentra la otra respuesta correcta.';
             feedback.style.color = 'green';
-            score++;
+            score += 5;
             scoreDisplay.textContent = score;
         } else if (firstCorrectCard !== cardName) {
             correctCards++;
             feedback.textContent = '¡Correcto! Has encontrado ambas respuestas correctas.';
             feedback.style.color = 'green';
-            score++;
+            score += 5;
             scoreDisplay.textContent = score;
             if (correctCards === 1) { // Si se seleccionaron ambas respuestas correctas
                 // Acumular los puntos en localStorage
@@ -118,7 +118,7 @@ function advanceToNextLevel() {
     localStorage.setItem('grado', gradoIndex);
 
     // Redirigir al siguiente nivel
-    window.location.href = 'nivel48.html'; // Cambia esto por el archivo HTML del siguiente nivel
+    window.location.href = 'nivel11.html'; // Cambia esto por el archivo HTML del siguiente nivel
 }
 
 // Inicializar el juego al cargar el nivel

@@ -61,7 +61,7 @@ function checkAnswer(card) {
     if (cardName === 'estabilizador') {
         feedback.textContent = '¡Correcto! Has encontrado el estabilizador vertical.';
         feedback.style.color = 'green';
-        score++;
+        score += 5;
         scoreDisplay.textContent = score;
         // Acumular los puntos en localStorage
         let puntosAcumulados = parseInt(localStorage.getItem('puntos')) || 0;

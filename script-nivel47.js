@@ -72,13 +72,13 @@ function checkAnswer(card) {
             firstCorrectCard = cardName; // Guardar la primera carta correcta seleccionada
             feedback.textContent = '¡Correcto! Ahora encuentra la otra respuesta correcta.';
             feedback.style.color = 'green';
-            score++;
+            score += 5;
             scoreDisplay.textContent = score;
         } else if (firstCorrectCard !== cardName) {
             correctCards++;
             feedback.textContent = '¡Correcto! Has encontrado ambas respuestas correctas.';
             feedback.style.color = 'green';
-            score++;
+            score += 5;
             scoreDisplay.textContent = score;
             if (correctCards === 1) { // Si se seleccionaron ambas respuestas correctas
                 // Acumular los puntos en localStorage

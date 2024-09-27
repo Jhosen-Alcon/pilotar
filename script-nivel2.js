@@ -61,7 +61,7 @@ function checkAnswer(card) {
     if (cardName === 'timon') {
         feedback.textContent = '¡Correcto! Has encontrado el timón de dirección.';
         feedback.style.color = 'green';
-        score++;
+        score += 5;
         scoreDisplay.textContent = score;
         // Acumular los puntos en localStorage
         let puntosAcumulados = parseInt(localStorage.getItem('puntos')) || 0;

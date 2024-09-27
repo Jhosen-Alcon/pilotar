@@ -70,7 +70,7 @@ function checkAnswer(card) {
         correctCards++;
         feedback.textContent = `¡Correcto! Has encontrado ${correctCards} de 7 respuestas correctas.`;
         feedback.style.color = 'green';
-        score++;
+        score += 5;
         scoreDisplay.textContent = score;
         if (correctCards === 7) { // Si se seleccionaron las 7 respuestas correctas
             // Acumular los puntos en localStorage
