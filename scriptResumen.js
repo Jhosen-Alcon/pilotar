@@ -26,6 +26,11 @@ function reiniciarJuego() {
     window.location.href = 'index3.html'; // Redirige al primer nivel o pantalla inicial
 }
 
+// Función para manejar el botón "Siguiente"
+function irAlSiguiente() {
+    window.location.href = 'JUEGO/index.html'; // Redirige a la página que desees
+}
+
 // Inicializar la pantalla de resumen al cargar
 window.onload = function() {
     mostrarNombre();
@@ -34,4 +39,7 @@ window.onload = function() {
 
     // Asignar evento al botón "Jugar de Nuevo"
     document.getElementById('restart-game').addEventListener('click', reiniciarJuego);
+    
+    // Asignar evento al botón "Siguiente"
+    document.getElementById('btnSiguiente').addEventListener('click', irAlSiguiente);
 };
