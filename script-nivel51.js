@@ -79,8 +79,10 @@ function checkAnswer(card) {
             advanceToNextLevel();
         }, 1000); // Reducido el tiempo de espera a 1 segundo antes de avanzar
     } else {
-        feedback.textContent = 'Intenta de nuevo.';
+        feedback.textContent = 'Respuesta incorrecta. Se te resta un punto.';
         feedback.style.color = 'red';
+        score = Math.max(0, score - 1); // Restar 1 punto, asegurando que no sea menor que 0
+        scoreDisplay.textContent = score; // Actualizar la visualización del puntaje
         setTimeout(() => {
             card.classList.remove('flipped'); // Volver a voltear la carta incorrecta
         }, 1000);
@@ -91,6 +93,9 @@ function checkAnswer(card) {
 function endGame(message) {
     feedback.textContent = message;
     cards.forEach(card => card.removeEventListener('click', handleCardClick));
+    setTimeout(() => {
+        advanceToNextLevel(); // Pasar al siguiente nivel después de 2 segundos
+    }, 2000);
 }
 
 // Manejar el clic en las cartas

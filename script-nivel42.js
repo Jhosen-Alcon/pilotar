@@ -93,6 +93,8 @@ function checkAnswer(card) {
     } else {
         feedback.textContent = 'Intenta de nuevo.';
         feedback.style.color = 'red';
+        score -= 1; // Restar 1 punto por respuesta incorrecta
+        scoreDisplay.textContent = score; // Actualizar la visualización del puntaje
         setTimeout(() => {
             card.classList.remove('flipped'); // Volver a voltear la carta incorrecta
         }, 1000);
@@ -103,6 +105,9 @@ function checkAnswer(card) {
 function endGame(message) {
     feedback.textContent = message;
     cards.forEach(card => card.removeEventListener('click', handleCardClick));
+    setTimeout(() => {
+        advanceToNextLevel(); // Pasar al siguiente nivel sin sumar ni restar puntos
+    }, 2000); // Cambiado a 2 segundos para asegurar que el mensaje se vea antes de avanzar
 }
 
 // Manejar el clic en las cartas
