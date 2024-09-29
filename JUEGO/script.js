@@ -6,8 +6,6 @@ let sound_die = new Audio('sounds effect/die.mp3');
 
 // getting bird element properties
 let bird_props = bird.getBoundingClientRect();
-
-// This method returns DOMReact -> top, right, bottom, left, x, y, width and height
 let background = document.querySelector('.background').getBoundingClientRect();
 
 let score_val = document.querySelector('.score_val');
@@ -18,12 +16,13 @@ let game_state = 'Start';
 img.style.display = 'none';
 message.classList.add('messageStyle');
 
-document.addEventListener('keydown', (e) => {
-    
-    if(e.key == 'Enter' && game_state != 'Play'){
-        document.querySelectorAll('.pipe_sprite').forEach((e) => {
-            e.remove();
-        });
+// Para empezar el juego con teclado o con toque en pantalla
+document.addEventListener('keydown', startGame);
+document.addEventListener('touchstart', startGame);
+
+function startGame(e) {
+    if ((e.key == 'Enter' || e.type == 'touchstart') && game_state != 'Play') {
+        document.querySelectorAll('.pipe_sprite').forEach((e) => e.remove());
         img.style.display = 'block';
         bird.style.top = '40vh';
         game_state = 'Play';
@@ -33,30 +32,35 @@ document.addEventListener('keydown', (e) => {
         message.classList.remove('messageStyle');
         play();
     }
-});
+}
 
-function play(){
-    function move(){
-        if(game_state != 'Play') return;
+function play() {
+    function move() {
+        if (game_state != 'Play') return;
 
         let pipe_sprite = document.querySelectorAll('.pipe_sprite');
         pipe_sprite.forEach((element) => {
             let pipe_sprite_props = element.getBoundingClientRect();
             bird_props = bird.getBoundingClientRect();
 
-            if(pipe_sprite_props.right <= 0){
+            if (pipe_sprite_props.right <= 0) {
                 element.remove();
-            }else{
-                if(bird_props.left < pipe_sprite_props.left + pipe_sprite_props.width && bird_props.left + bird_props.width > pipe_sprite_props.left && bird_props.top < pipe_sprite_props.top + pipe_sprite_props.height && bird_props.top + bird_props.height > pipe_sprite_props.top){
+            } else {
+                if (
+                    bird_props.left < pipe_sprite_props.left + pipe_sprite_props.width &&
+                    bird_props.left + bird_props.width > pipe_sprite_props.left &&
+                    bird_props.top < pipe_sprite_props.top + pipe_sprite_props.height &&
+                    bird_props.top + bird_props.height > pipe_sprite_props.top
+                ) {
                     game_state = 'End';
-                    message.innerHTML = 'Game Over'.fontcolor('red') + '<br>Press Enter To Restart';
+                    message.innerHTML = 'Game Over'.fontcolor('red') + '<br>Press Enter or Tap to Restart';
                     message.classList.add('messageStyle');
                     img.style.display = 'none';
                     sound_die.play();
                     return;
-                }else{
-                    if(pipe_sprite_props.right < bird_props.left && pipe_sprite_props.right + move_speed >= bird_props.left && element.increase_score == '1'){
-                        score_val.innerHTML =+ score_val.innerHTML + 1;
+                } else {
+                    if (pipe_sprite_props.right < bird_props.left && pipe_sprite_props.right + move_speed >= bird_props.left && element.increase_score == '1') {
+                        score_val.innerHTML = +score_val.innerHTML + 1;
                         sound_point.play();
                     }
                     element.style.left = pipe_sprite_props.left - move_speed + 'px';
@@ -68,23 +72,30 @@ function play(){
     requestAnimationFrame(move);
 
     let bird_dy = 0;
-    function apply_gravity(){
-        if(game_state != 'Play') return;
-        bird_dy = bird_dy + grativy;
-        document.addEventListener('keydown', (e) => {
-            if(e.key == 'ArrowUp' || e.key == ' '){
+    function apply_gravity() {
+        if (game_state != 'Play') return;
+        bird_dy += grativy;
+
+        // Control de la gravedad con teclado (ArrowUp o Espacio) y toque en la pantalla
+        document.addEventListener('keydown', fly);
+        document.addEventListener('touchstart', fly);
+        document.addEventListener('keyup', stopFly);
+        document.addEventListener('touchend', stopFly);
+
+        function fly(e) {
+            if (e.key == 'ArrowUp' || e.key == ' ' || e.type == 'touchstart') {
                 img.src = 'images/Bird-2.png';
                 bird_dy = -7.6;
             }
-        });
+        }
 
-        document.addEventListener('keyup', (e) => {
-            if(e.key == 'ArrowUp' || e.key == ' '){
+        function stopFly(e) {
+            if (e.key == 'ArrowUp' || e.key == ' ' || e.type == 'touchend') {
                 img.src = 'images/Bird.png';
             }
-        });
+        }
 
-        if(bird_props.top <= 0 || bird_props.bottom >= background.bottom){
+        if (bird_props.top <= 0 || bird_props.bottom >= background.bottom) {
             game_state = 'End';
             message.style.left = '28vw';
             window.location.reload();
@@ -98,13 +109,12 @@ function play(){
     requestAnimationFrame(apply_gravity);
 
     let pipe_seperation = 0;
-
     let pipe_gap = 35;
 
-    function create_pipe(){
-        if(game_state != 'Play') return;
+    function create_pipe() {
+        if (game_state != 'Play') return;
 
-        if(pipe_seperation > 115){
+        if (pipe_seperation > 115) {
             pipe_seperation = 0;
 
             let pipe_posi = Math.floor(Math.random() * 43) + 8;
