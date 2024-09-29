@@ -53,7 +53,7 @@ function play() {
                     bird_props.top + bird_props.height > pipe_sprite_props.top
                 ) {
                     game_state = 'End';
-                    message.innerHTML = 'Game Over'.fontcolor('red') + '<br>Press Enter or Tap to Restart';
+                    message.innerHTML = 'Perdiste'.fontcolor('red') + '<br>Presiona Enter o tap a la pantalla';
                     message.classList.add('messageStyle');
                     img.style.display = 'none';
                     sound_die.play();
