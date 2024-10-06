@@ -13,13 +13,36 @@
         </div>
         <div id="capitan-viento-container">
             <div id="dialogo">
-                <p id="mensaje-capitan">¡Hola! Soy el Capitán Viento. Hoy aprenderemos sobre un truco que los pilotos usan a veces, llamado "resbale intencionado". Imagina que estás en un avión y necesitas bajar rápido, pero sin ir más rápido hacia adelante. Los pilotos pueden hacer que un ala se incline y usar los pedales para mantener el avión recto, pero con más resistencia al aire. Esto ayuda al avión a bajar más rápido, como si estuviera frenando en el aire. También es útil cuando hay mucho viento de un lado, para que el avión pueda aterrizar bien en la pista. ¡Recuerda, es un truco especial para situaciones especiales!</p>
+                <p id="mensaje-capitan">
+                    ¡Hola! Soy el Capitán Viento. Hoy aprenderemos sobre un truco que los pilotos usan a veces, llamado "resbale intencionado". Imagina que estás en un avión y necesitas bajar rápido, pero sin ir más rápido hacia adelante. Los pilotos pueden hacer que un ala se incline y usar los pedales para mantener el avión recto, pero con más resistencia al aire. Esto ayuda al avión a bajar más rápido, como si estuviera frenando en el aire. También es útil cuando hay mucho viento de un lado, para que el avión pueda aterrizar bien en la pista. ¡Recuerda, es un truco especial para situaciones especiales!
+                </p>
+                <button id="play-voice">Reproducir Relato</button> <!-- Botón para activar la voz -->
                 <button id="siguiente">SIGUIENTE</button>
-                <img id="imagen-referencia" src="resbaleintencionado.jpg" alt="Indicador de Bola">
+                <img id="imagen-referencia" src="resbaleintencionado.jpg" alt="Resbale intencionado">
             </div>
             <img id="capitan-viento" src="capitan_viento.png" alt="Capitán Viento">
         </div>
     </div>
+
+    <!-- iframe para la música -->
+    <iframe src="music.html" style="display:none;" id="music-iframe"></iframe>
+
+    <script>
+        // Función para convertir el texto a voz usando la API SpeechSynthesis
+        function speakText(text) {
+            const synth = window.speechSynthesis;  // API de síntesis de voz
+            const utterance = new SpeechSynthesisUtterance(text);  // Crea una nueva instancia
+            utterance.lang = 'es-ES';  // Configura el idioma a español
+            synth.speak(utterance);    // Reproduce el texto
+        }
+
+        // Al hacer clic en el botón "Reproducir Relato", reproducir el texto del Capitán Viento en voz alta
+        document.getElementById('play-voice').addEventListener('click', function() {
+            const mensaje = document.getElementById('mensaje-capitan').innerText;
+            speakText(mensaje);  // Llama a la función con el texto a reproducir
+        });
+    </script>
+
     <script src="script-nivel7.js"></script>
 </body>
 </html>

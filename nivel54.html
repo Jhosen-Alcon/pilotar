@@ -10,7 +10,7 @@
     <div id="game-container">
         <div id="header">
             <h1>Juego de Memoria</h1>
-            <h1>Sumario - recuerda todas la imagenes vistas y seleccionalas</h1>
+            <h1>Sumario - recuerda todas las imágenes vistas y selecciónalas</h1>
             <!-- Añadir nombre del jugador, puntos y grado -->
             <div id="nombreJugadorDisplay"></div>
             <div id="puntosAcumuladosDisplay"></div>
@@ -77,6 +77,18 @@
             <p id="feedback"></p>
         </div>
     </div>
+
+    <!-- iframe para la música -->
+    <iframe src="music.html" style="display:none;" id="music-iframe"></iframe>
+
+    <script>
+        const music = document.getElementById('gameMusic');
+
+        // Verifica si la música estaba sonando en la página anterior
+        if (localStorage.getItem('musicPlaying') === 'true') {
+            music.play();
+        }
+    </script>
     <script src="script-nivel54.js"></script>
 </body>
 </html>

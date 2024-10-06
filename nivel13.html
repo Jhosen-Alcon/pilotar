@@ -13,13 +13,36 @@
         </div>
         <div id="capitan-viento-container">
             <div id="dialogo">
-                <p id="mensaje-capitan">¡Hola de nuevo, Piloto en Entrenamiento! Ahora que dominas el vuelo recto y nivelado, y ver rpuntos de referencia es hora de aprender cómo cambiar de velocidad sin perder el control del avión. Cambiar de velocidad en el aire es un poco como cambiar de marcha en un coche: debes hacerlo suavemente para mantener el control y asegurarte de que el avión sigue volando de manera estable.</p>
+                <p id="mensaje-capitan">
+                    ¡Hola de nuevo, Piloto en Entrenamiento! Ahora que dominas el vuelo recto y nivelado, y ver puntos de referencia, es hora de aprender cómo cambiar de velocidad sin perder el control del avión. Cambiar de velocidad en el aire es un poco como cambiar de marcha en un coche: debes hacerlo suavemente para mantener el control y asegurarte de que el avión sigue volando de manera estable.
+                </p>
+                <button id="play-voice">Reproducir Relato</button> <!-- Botón para activar la voz -->
                 <button id="siguiente">SIGUIENTE</button>
-                <img id="imagen-referencia" src="cambiovelocidad.png" alt="Indicador de Bola">
+                <img id="imagen-referencia" src="cambiovelocidad.png" alt="Cambiar de velocidad">
             </div>
             <img id="capitan-viento" src="capitan_viento.png" alt="Capitán Viento">
         </div>
     </div>
+
+    <!-- iframe para la música -->
+    <iframe src="music.html" style="display:none;" id="music-iframe"></iframe>
+
+    <script>
+        // Función para convertir el texto a voz usando la API SpeechSynthesis
+        function speakText(text) {
+            const synth = window.speechSynthesis;  // API de síntesis de voz
+            const utterance = new SpeechSynthesisUtterance(text);  // Crea una nueva instancia
+            utterance.lang = 'es-ES';  // Configura el idioma a español
+            synth.speak(utterance);    // Reproduce el texto
+        }
+
+        // Al hacer clic en el botón "Reproducir Relato", reproducir el texto del Capitán Viento en voz alta
+        document.getElementById('play-voice').addEventListener('click', function() {
+            const mensaje = document.getElementById('mensaje-capitan').innerText;
+            speakText(mensaje);  // Llama a la función con el texto a reproducir
+        });
+    </script>
+
     <script src="script-nivel13.js"></script>
 </body>
 </html>

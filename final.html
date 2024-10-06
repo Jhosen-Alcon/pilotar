@@ -19,7 +19,16 @@
         <button id="restart-game">Jugar de Nuevo</button>
 
     </div>
+    <audio id="gameMusic" src="musica.mp3" loop></audio>
 
+    <script>
+    const music = document.getElementById('gameMusic');
+
+    // Verifica si la música estaba sonando en la página anterior
+    if (localStorage.getItem('musicPlaying') === 'true') {
+        music.play();
+    }
+</script>
     <script src="scriptResumen.js"></script>
 </body>
 </html>

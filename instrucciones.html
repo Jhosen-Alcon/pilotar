@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instrucciones del Juego - Aprende a Pilotar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="instrucciones-container">
+        <h1>Instrucciones del Juego - Aprende a Pilotar</h1>
+        <p>
+            ¡Bienvenido al juego de memoria para aprender a pilotar! A continuación, te explicamos cómo funciona el juego y qué debes hacer para avanzar en cada nivel:
+        </p>
+
+        <h2>Objetivo del Juego</h2>
+        <p>
+            El objetivo es completar una serie de niveles, donde debes recordar y seleccionar las imágenes correctas relacionadas con el pilotaje de aviones. Cada nivel tiene diferentes conceptos de aviación que aprenderás a medida que avanzas.
+        </p>
+
+        <h2>Cómo Jugar</h2>
+        <ul>
+            <li>Introduce tu nombre en la pantalla de inicio para comenzar a jugar.</li>
+            <li>En cada nivel, se te presentarán imágenes relacionadas con conceptos de pilotaje. Tu tarea es seleccionar las imágenes correctas basándote en lo que hayas aprendido.</li>
+            <li>Algunas imágenes serán incorrectas y no representarán correctamente el concepto que estamos enseñando. ¡Cuidado con no seleccionarlas!</li>
+        </ul>
+
+        <h2>Niveles</h2>
+        <p>
+            El juego consta de varios niveles. A medida que avances, aprenderás sobre diferentes aspectos del vuelo:
+        </p>
+        <ul>
+            <li><strong>Nivel 1:</strong> Conceptos básicos sobre la estabilidad del avión.</li>
+            <li><strong>Nivel 2:</strong> Cómo cambiar de velocidad sin perder el control.</li>
+            <li><strong>Nivel 3:</strong> Cómo realizar un resbale intencionado y cuándo aplicarlo.</li>
+            <li><strong>Nivel 4:</strong> Seguir la dirección de vuelo y mantener el rumbo correcto.</li>
+            <li><strong>Nivel 5:</strong> Y muchos niveles que será divertido aprender.</li>
+            <li><strong>Nivel Final:</strong> Resumen de todo lo aprendido.</li>
+        </ul>
+
+        <h2>Puntuación</h2>
+        <p>
+            Tu puntuación se basa en los movimientos correctos que realices. A mayor precisión, mayor será tu puntaje.
+        </p>
+
+        <h2>Grados</h2>
+        <p>
+            A medida que acumules puntos y avances en los niveles, irás subiendo de rango, desde Civil hasta llegar a ser un Comandante. ¡Intenta llegar al grado más alto!
+        </p>
+
+        <h2>Controles</h2>
+        <ul>
+            <li><strong>Clic izquierdo:</strong> Selecciona una tarjeta o imagen en el tablero.</li>
+            <li><strong>Botón "Iniciar Juego":</strong> Comienza el juego desde el nivel 1.</li>
+            <li><strong>Botón "Instrucciones":</strong> Lee estas instrucciones en cualquier momento.</li>
+        </ul>
+
+        <h2>¿Listo para Volar?</h2>
+        <p>
+            Cuando estés listo, vuelve a la pantalla de inicio y haz clic en "Iniciar Juego" para comenzar tu aventura como piloto.
+        </p>
+
+        <button onclick="window.location.href='index.html'">Volver al Inicio</button>
+        <button id="play-voice">Reproducir Instrucciones</button> <!-- Botón para reproducir la narración -->
+        <button id="pause-voice">Pausar Instrucciones</button> <!-- Botón para pausar la narración -->
+    </div>
+
+    <!-- iframe para la música de fondo -->
+    <iframe src="music.html" style="display:none;"></iframe>
+
+    <script>
+        let synth = window.speechSynthesis; // Instancia de la API SpeechSynthesis
+        let utterance; // Variable para manejar la voz
+        let isPlaying = false; // Para verificar si la narración está en curso
+
+        // Función para convertir el texto a voz usando la API SpeechSynthesis
+        function speakText(text) {
+            utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'es-ES'; // Configura el idioma a español
+            synth.speak(utterance); // Reproduce el texto
+        }
+
+        // Evento para reproducir la narración
+        document.getElementById('play-voice').addEventListener('click', function() {
+            if (!isPlaying) { // Si no se está reproduciendo
+                const instructions = document.getElementById('instrucciones-container').innerText; // Obtiene el texto
+                speakText(instructions); // Reproduce la voz
+                isPlaying = true; // Cambia el estado a reproduciendo
+            } else {
+                synth.resume(); // Reanudar si está en pausa
+            }
+        });
+
+        // Evento para pausar la narración
+        document.getElementById('pause-voice').addEventListener('click', function() {
+            if (synth.speaking && !synth.paused) { // Verifica si la voz está activa y no está pausada
+                synth.pause(); // Pausar la voz
+            }
+        });
+    </script>
+</body>
+</html>

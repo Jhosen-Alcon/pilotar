@@ -13,7 +13,7 @@ function iniciarNuevoJuego() {
 
 // Asignar eventos y lógica al cargar el primer nivel
 window.onload = function() {
-    if (window.location.pathname.includes('index3.html')) { // Cambia esto si tu archivo principal tiene otro nombre
+    if (window.location.pathname.includes('index2.html')) { // Cambia esto si tu archivo principal tiene otro nombre
         iniciarNuevoJuego();
     }
     // Aquí sigue el resto de la lógica general del juego
@@ -25,14 +25,15 @@ document.getElementById('start-game').addEventListener('click', function() {
 });
 
 document.getElementById('instructions').addEventListener('click', function() {
-    alert('Aquí van las instrucciones del juego...'); // Aquí puedes mostrar las instrucciones o redirigir a una página con instrucciones
+    // Redirigir a la página de instrucciones
+    window.location.href = 'instrucciones.html'; // Redirige a la página de instrucciones
 });
 
 function guardarNombre() {
     const nombre = document.getElementById('nombreJugador').value;
     if (nombre) {
         localStorage.setItem('nombreJugador', nombre);
-        window.location.href = 'index3.html'; // Redirige al primer nivel
+        window.location.href = 'index2.html'; // Redirige al primer nivel
     } else {
         alert('Por favor, ingresa tu nombre para empezar el juego.');
     }
@@ -80,12 +81,12 @@ function mostrarInformacionFinal() {
 
 document.getElementById('restart-game').addEventListener('click', function() {
     reiniciarProgreso(); // Reiniciar el progreso del juego
-    window.location.href = 'index3.html'; // Redirigir al primer nivel o pantalla inicial
+    window.location.href = 'index2.html'; // Redirigir al primer nivel o pantalla inicial
 });
 
 document.getElementById('start-again').addEventListener('click', function() {
     reiniciarProgreso(); // Reiniciar el progreso del juego
-    window.location.href = 'index3.html'; // Redirigir al primer nivel o pantalla inicial
+    window.location.href = 'index2.html'; // Redirigir al primer nivel o pantalla inicial
 });
 
 // Ejecutar mostrarInformacionFinal si estamos en la página final

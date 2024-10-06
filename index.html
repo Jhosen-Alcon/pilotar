@@ -15,6 +15,17 @@
         <!-- Botón para iniciar el juego que llamará a la función guardarNombre() -->
         <button id="start-game">Iniciar Juego</button>
         <button id="instructions">Instrucciones</button>
+        <audio id="gameMusic" src="musica.mp3" loop></audio>
+
+        <script>
+        const music = document.getElementById('gameMusic');
+
+        // Verifica si la música estaba sonando en la página anterior
+        if (localStorage.getItem('musicPlaying') === 'true') {
+            music.play();
+        }
+    </script>
+    
     </div>
 
     <script src="principal.js"></script>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción - Aprende a Pilotar</title>
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+    <div id="introduccion-container">
+        <h1>¡Bienvenido, Piloto en Entrenamiento!</h1>
+        <img id="capitan-viento" src="capitan_viento.png" alt="Capitán Viento" style="width: 200px;"/>
+
+        <p id="mensaje-capitan1">
+            ¡Hola! Soy el Capitán Viento, tu guía en esta emocionante aventura aérea. Estás a punto de embarcarte en un viaje donde aprenderás a pilotar un avión mientras pones a prueba tu memoria. A lo largo de este juego, te enseñaré conceptos esenciales de aviación que todo piloto debe conocer.
+        </p>
+
+        <p id="mensaje-capitan2">
+            ¿Estás listo para despegar? El objetivo es simple: deberás completar una serie de niveles, recordando y seleccionando las imágenes correctas. Cada imagen representa un aspecto importante del vuelo, como cómo mantener el avión estable, cómo realizar maniobras avanzadas como el resbale intencionado, y mucho más. A medida que avanzas, ganarás puntos y subirás de rango, ¡hasta convertirte en todo un Comandante!
+        </p>
+
+        <p id="mensaje-capitan3">
+            Pero ten cuidado, joven piloto. No todas las imágenes son correctas. Algunas podrían desviar tu atención y hacer que cometas errores. ¡Presta mucha atención a mis indicaciones!
+        </p>
+
+        <p id="mensaje-capitan4">
+            Así que, prepárate para despegar, pon a prueba tu memoria y conviértete en el mejor piloto que los cielos hayan visto. ¡Nos vemos en la cabina de mando!
+        </p>
+
+        <button id="play-voice">Escuchar Introducción</button> <!-- Botón para reproducir la introducción -->
+        <button onclick="window.location.href='index3.html'">Comenzar el Juego</button>
+    </div>
+
+    <!-- iframe para la música de fondo -->
+    <iframe src="music.html" style="display:none;"></iframe>
+
+    <script>
+        let synth = window.speechSynthesis;
+        let utterance;
+
+        // Función para narrar la introducción completa
+        function speakText() {
+            // Concatenar el contenido de todos los párrafos
+            const fullText = 
+                document.getElementById('mensaje-capitan1').innerText + ' ' +
+                document.getElementById('mensaje-capitan2').innerText + ' ' +
+                document.getElementById('mensaje-capitan3').innerText + ' ' +
+                document.getElementById('mensaje-capitan4').innerText;
+            
+            // Crear una nueva instancia de utterance con el texto completo
+            utterance = new SpeechSynthesisUtterance(fullText);
+            utterance.lang = 'es-ES'; // Configura el idioma a español
+            synth.speak(utterance); // Reproduce el texto
+        }
+
+        // Evento para reproducir la narración
+        document.getElementById('play-voice').addEventListener('click', function() {
+            speakText(); // Llama a la función que reproduce toda la narración
+        });
+    </script>
+</body>
+</html>

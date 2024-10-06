@@ -18,7 +18,10 @@
         </div>
         <div id="capitan-viento-container">
             <div id="dialogo">
-                <p id="mensaje-capitan">¡Hola! Soy el Capitán Viento. Con lo que te enseñé anteriormente, veamos ahora cuál es la indicación de vuelo recto y nivelado, que es cuando el avión vuela sin desviarse ni inclinarse, manteniendo la bola centrada en el indicador. HAZ CLICK PARA CONTINUAR (ahora sin imagen de ayuda)</p>
+                <p id="mensaje-capitan">
+                    ¡Hola! Soy el Capitán Viento. Con lo que te enseñé anteriormente, veamos ahora cuál es la indicación de vuelo recto y nivelado, que es cuando el avión vuela sin desviarse ni inclinarse, manteniendo la bola centrada en el indicador. HAZ CLICK PARA CONTINUAR (ahora sin imagen de ayuda)
+                </p>
+                <button id="play-voice">Reproducir Relato</button> <!-- Botón para activar la voz -->
             </div>
             <img id="capitan-viento" src="capitan_viento.png" alt="Capitán Viento">
         </div>
@@ -67,6 +70,26 @@
             <p id="feedback"></p>
         </div>
     </div>
+
+    <!-- iframe para la música -->
+    <iframe src="music.html" style="display:none;" id="music-iframe"></iframe>
+
+    <script>
+        // Función para convertir el texto a voz usando la API SpeechSynthesis
+        function speakText(text) {
+            const synth = window.speechSynthesis;  // API de síntesis de voz
+            const utterance = new SpeechSynthesisUtterance(text);  // Crea una nueva instancia
+            utterance.lang = 'es-ES';  // Configura el idioma a español
+            synth.speak(utterance);    // Reproduce el texto
+        }
+
+        // Al hacer clic en el botón "Reproducir Relato", reproducir el texto del Capitán Viento en voz alta
+        document.getElementById('play-voice').addEventListener('click', function() {
+            const mensaje = document.getElementById('mensaje-capitan').innerText;
+            speakText(mensaje);  // Llama a la función con el texto a reproducir
+        });
+    </script>
+
     <script src="script-nivel43.js"></script>
 </body>
 </html>
