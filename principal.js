@@ -13,7 +13,7 @@ function iniciarNuevoJuego() {
 
 // Asignar eventos y lógica al cargar el primer nivel
 window.onload = function() {
-    if (window.location.pathname.includes('index2.html')) { // Cambia esto si tu archivo principal tiene otro nombre
+    if (window.location.pathname.includes('pruebaintro.html')) { // Cambia esto si tu archivo principal tiene otro nombre
         iniciarNuevoJuego();
     }
     // Aquí sigue el resto de la lógica general del juego
@@ -33,7 +33,7 @@ function guardarNombre() {
     const nombre = document.getElementById('nombreJugador').value;
     if (nombre) {
         localStorage.setItem('nombreJugador', nombre);
-        window.location.href = 'index2.html'; // Redirige al primer nivel
+        window.location.href = 'pruebaintro.html'; // Redirige al primer nivel
     } else {
         alert('Por favor, ingresa tu nombre para empezar el juego.');
     }
@@ -81,12 +81,12 @@ function mostrarInformacionFinal() {
 
 document.getElementById('restart-game').addEventListener('click', function() {
     reiniciarProgreso(); // Reiniciar el progreso del juego
-    window.location.href = 'index2.html'; // Redirigir al primer nivel o pantalla inicial
+    window.location.href = 'pruebaintro.html'; // Redirigir al primer nivel o pantalla inicial
 });
 
 document.getElementById('start-again').addEventListener('click', function() {
     reiniciarProgreso(); // Reiniciar el progreso del juego
-    window.location.href = 'index2.html'; // Redirigir al primer nivel o pantalla inicial
+    window.location.href = 'pruebaintro.html'; // Redirigir al primer nivel o pantalla inicial
 });
 
 // Ejecutar mostrarInformacionFinal si estamos en la página final

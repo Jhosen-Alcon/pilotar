@@ -38,8 +38,11 @@
         let synth = window.speechSynthesis;
         let utterance;
 
-        // Función para narrar la introducción completa
+        // Función para detener cualquier narración en curso antes de iniciar una nueva
         function speakText() {
+            // Detener cualquier narración anterior si está en curso
+            synth.cancel();
+
             // Concatenar el contenido de todos los párrafos
             const fullText = 
                 document.getElementById('mensaje-capitan1').innerText + ' ' +
@@ -50,7 +53,9 @@
             // Crear una nueva instancia de utterance con el texto completo
             utterance = new SpeechSynthesisUtterance(fullText);
             utterance.lang = 'es-ES'; // Configura el idioma a español
-            synth.speak(utterance); // Reproduce el texto
+
+            // Reproducir la narración completa
+            synth.speak(utterance);
         }
 
         // Evento para reproducir la narración

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial</title>
+    <link rel="stylesheet" href="styles41.css">
+</head>
+<body>
+    <div id="game-container">
+       
+        <!-- Nueva sección para el video de introducción -->
+        <div id="introduccion">
+            <h2>Introducción</h2>
+            <!-- Incrustar el video de YouTube aquí con la URL correcta -->
+            <iframe width="1000" height="500" src="https://www.youtube.com/embed/hOT6oveYLvM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+
+        <!-- Botón Siguiente que redirige a index2.html -->
+        <div id="siguiente-boton">
+            <button onclick="irASiguiente()">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        function irASiguiente() {
+            window.location.href = 'index2.html'; // Redirige a la página index2.html
+        }
+    </script>
+
+    <script src="introduccion.js"></script>
+</body>
+</html>
